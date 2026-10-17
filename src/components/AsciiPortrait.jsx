@@ -1,21 +1,20 @@
 import { useMemo } from "react";
-import AsciiOval from "./AsciiOval";
+import AsciiStage from "./AsciiStage";
 import { useAsciiReveal } from "../hooks/useAsciiReveal";
 
 const CELL_WIDTH = 0.6; // ancho de una letra monoespaciada, en veces su altura
 
-// Retrato en ASCII dentro de un óvalo.
-// `scale` agranda el dibujo para que cubra el óvalo (lo que sobra se recorta).
+// Retrato en ASCII dibujado directo sobre la página.
+// `scale` ajusta el tamaño del dibujo respecto al ancho disponible.
 // `square` estira el dibujo a lo alto para que recupere sus proporciones originales (sin dejar huecos entre líneas).
 function AsciiPortrait({
   art,
   label,
   caption,
   detail,
-  scale = 1.2,
+  scale = 1,
   square = false,
-  textClass = "text-snow dark:text-mint",
-  shadowClass,
+  textClass = "text-ink",
 }) {
   const shown = useAsciiReveal(art);
   const { fontSize, stretch } = useMemo(() => {
@@ -27,19 +26,17 @@ function AsciiPortrait({
     };
   }, [art, scale, square]);
 
+  const style = { fontSize, lineHeight: 1, transform: `scaleY(${stretch})` };
+
   return (
     <figure className="mx-auto w-full">
-      <AsciiOval label={label} shadowClass={shadowClass}>
+      <AsciiStage label={label} aspectClass="aspect-square">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <pre
-            aria-hidden="true"
-            className={`font-mono ${textClass}`}
-            style={{ fontSize, lineHeight: 1, transform: `scaleY(${stretch})` }}
-          >
+          <pre aria-hidden="true" className={`font-mono ${textClass}`} style={style}>
             {shown}
           </pre>
         </div>
-      </AsciiOval>
+      </AsciiStage>
       {caption && (
         <figcaption className="mt-8 flex items-baseline justify-between border-t-2 border-ink pt-2">
           <span className="font-display text-xl font-extrabold uppercase">{caption}</span>

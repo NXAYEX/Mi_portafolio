@@ -51,9 +51,7 @@ function Hero() {
             label="Retrato de Nayely dibujado con caracteres ASCII"
             caption="Nayely"
             detail="USM · Informática"
-            scale={1.25}
             square
-            shadowClass="bg-lavender"
           />
         </div>
 
@@ -76,14 +74,12 @@ function Hero() {
           label="Retrato de Ada Lovelace dibujado con caracteres ASCII"
           caption="Ada Lovelace"
           detail="1815–1852"
-          shadowClass="bg-mint"
         />
         <AsciiPortrait
           art={turingArt}
           label="Retrato de Alan Turing dibujado con caracteres ASCII"
           caption="Alan Turing"
           detail="1912–1954"
-          shadowClass="bg-peach"
         />
       */}
     </section>
