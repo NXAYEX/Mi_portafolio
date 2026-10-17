@@ -29,7 +29,7 @@ export const heroFacts = [
   { label: "XAI", detail: "Retina con Vision Transformers y LIME · F1 > 93%" },
 ];
 
-export const portraits = [
-  { key: "ada", caption: "Ada Lovelace", years: "1815–1852" },
-  { key: "alan", caption: "Alan Turing", years: "1912–1954" },
-];
+//export const portraits = [
+  //{ key: "ada", caption: "Ada Lovelace", years: "1815–1852" },
+  //{ key: "alan", caption: "Alan Turing", years: "1912–1954" },
+//];
