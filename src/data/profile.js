@@ -15,10 +15,10 @@ export const profile = {
 };
 
 export const navLinks = [
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Habilidades", href: "#habilidades" },
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Proyectos", href: "/#proyectos" },
+  { label: "Habilidades", href: "/#habilidades" },
+  { label: "Sobre mí", href: "/#sobre-mi" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export const heroFacts = [

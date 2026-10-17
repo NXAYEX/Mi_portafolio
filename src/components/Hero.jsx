@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import AsciiPortrait from "./AsciiPortrait";
-import RetroComputer from "./RetroComputer";
+import AsciiDonut from "./AsciiDonut";
 import HeroFacts from "./HeroFacts";
 import { adaArt, turingArt } from "../data/asciiArt";
 import { profile } from "../data/profile";
@@ -10,12 +10,12 @@ const focusRing =
 
 // Título tipo sello: contorno de tinta y sombra dura desplazada
 const stamp =
-  "block font-display font-black uppercase text-3xl md:text-4xl [-webkit-text-stroke:2px_#16161D] [text-shadow:4px_4px_0_#16161D,8px_8px_0_#16161D]";
+  "block font-display font-black uppercase text-3xl md:text-4xl lg:text-3xl xl:text-4xl [-webkit-text-stroke:2px_#16161D] [text-shadow:4px_4px_0_#16161D,8px_8px_0_#16161D]";
 
 function Hero() {
   return (
     <section id="inicio" className="mx-auto max-w-[1280px] px-4 pb-12 pt-10 md:px-8 md:pt-16">
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[260px_1fr_260px] lg:items-center">
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[240px_1fr_240px] xl:grid-cols-[290px_1fr_290px] lg:items-center">
         <div className="text-center sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1">
           <h1 className="mb-8">
             <span className={`${stamp} text-mint`}>{profile.firstLine}</span>
@@ -41,7 +41,7 @@ function Hero() {
               Escribirme un correo
             </a>
           </div>
-          <RetroComputer className="mx-auto mt-10 hidden w-40 lg:block" />
+          <AsciiDonut className="mx-auto mt-10 hidden w-full max-w-[260px] lg:block" />
         </div>
 
         <div className="lg:col-start-1 lg:row-start-1">
@@ -49,9 +49,8 @@ function Hero() {
             art={adaArt}
             caption="Ada Lovelace"
             years="1815–1852"
-            textClass="text-mint"
-            shadowClass="bg-lavender"
-            blobClass="rounded-[58%_42%_52%_48%/46%_54%_46%_54%]"
+            plateClass="bg-lavender"
+            shadowClass="shadow-[8px_8px_0_#16161D]"
           />
         </div>
         <div className="lg:col-start-3 lg:row-start-1">
@@ -59,9 +58,8 @@ function Hero() {
             art={turingArt}
             caption="Alan Turing"
             years="1912–1954"
-            textClass="text-lavender"
-            shadowClass="bg-peach"
-            blobClass="rounded-[44%_56%_48%_52%/56%_44%_56%_44%]"
+            plateClass="bg-mint"
+            shadowClass="shadow-[8px_8px_0_#16161D]"
           />
         </div>
       </div>

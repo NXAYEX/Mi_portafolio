@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
+import ProjectsSection from "../components/ProjectsSection";
 
 function Home() {
   useEffect(() => {
@@ -12,6 +13,7 @@ function Home() {
       <Navbar />
       <main>
         <Hero />
+        <ProjectsSection />
       </main>
     </>
   );

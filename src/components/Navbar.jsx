@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-20 border-b-2 border-ink bg-paper">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 py-3 md:px-8">
-        <a href="#inicio" className={`flex items-center gap-3 ${focusRing}`}>
+        <a href="/#inicio" className={`flex items-center gap-3 ${focusRing}`}>
           <span className="grid h-10 w-10 place-items-center rounded-full bg-ink font-display text-lg font-extrabold text-mint">
             NP
           </span>

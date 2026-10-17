@@ -1,17 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
+import { prefersReducedMotion } from "../lib/motion";
 
 const GLYPHS = "01@#%&*+=<>/|{}[]";
 const FRAME_MS = 45;
-
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const randomGlyph = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
 
 // Muestra el dibujo como ruido de caracteres y lo "enfoca" de izquierda a derecha.
 export function useAsciiReveal(text, duration = 1600) {
-  const reduced = useMemo(prefersReducedMotion, []);
+  const reduced = useMemo(() => prefersReducedMotion(), []);
   const lines = useMemo(() => text.split("\n"), [text]);
 
   // Momento (en ms) en que cada carácter deja de ser ruido
