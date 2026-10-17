@@ -18,7 +18,7 @@ function ProjectCover({ project, className = "" }) {
       aria-label={`Marcador de la captura de ${name}, pendiente de subir`}
       className={`grid aspect-[4/3] place-items-center border-2 border-ink ${plateClass} ${className}`}
     >
-      <pre aria-hidden="true" className="font-mono text-base leading-5 text-ink">
+      <pre aria-hidden="true" className="font-mono text-base leading-5 text-night">
         {motif}
       </pre>
     </div>

@@ -4,13 +4,13 @@ import { profile } from "../data/profile";
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink";
-const solid = `inline-flex items-center justify-center gap-2 bg-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-lavender hover:text-ink ${focusRing}`;
-const outline = `inline-flex items-center justify-center gap-2 border-2 border-ink px-6 py-3 font-semibold transition-colors hover:bg-peach ${focusRing}`;
+const solid = `inline-flex items-center justify-center gap-2 bg-night px-6 py-3 font-semibold text-snow transition-colors hover:bg-lavender hover:text-night ${focusRing}`;
+const outline = `inline-flex items-center justify-center gap-2 border-2 border-night px-6 py-3 font-semibold transition-colors hover:bg-peach ${focusRing}`;
 
 function ContactSection() {
   return (
     <section id="contacto" className="mx-auto max-w-[1280px] scroll-mt-16 px-4 py-16 md:px-8">
-      <div className="border-2 border-ink bg-mint p-8 shadow-[8px_8px_0_#16161D] md:p-12">
+      <div className="border-2 border-ink bg-mint p-8 text-night shadow-[8px_8px_0_rgb(var(--ink))] md:p-12">
         <SectionHeading>Contacto</SectionHeading>
         <p className="mb-8 mt-4 max-w-xl text-lg">
           Busco práctica profesional en IA y ciencia de datos. Si tu equipo tiene un problema real
@@ -35,7 +35,7 @@ function ContactSection() {
               Descargar CV en PDF
             </a>
           ) : (
-            <span className="inline-flex items-center justify-center gap-2 border-2 border-dashed border-ink px-6 py-3 font-semibold">
+            <span className="inline-flex items-center justify-center gap-2 border-2 border-dashed border-night px-6 py-3 font-semibold">
               <FileDown size={18} aria-hidden="true" />
               CV disponible pronto
             </span>

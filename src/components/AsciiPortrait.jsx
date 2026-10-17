@@ -1,45 +1,51 @@
 import { useMemo } from "react";
+import AsciiOval from "./AsciiOval";
 import { useAsciiReveal } from "../hooks/useAsciiReveal";
 
-// Retrato en ASCII sobre una lámina pastel con borde de tinta y sombra dura.
-// El tamaño de letra se calcula con el ancho de la lámina (cqw), así el dibujo
-// siempre ocupa todo el ancho sin importar el tamaño de pantalla.
+const CELL_WIDTH = 0.6; // ancho de una letra monoespaciada, en veces su altura
+
+// Retrato en ASCII dentro de un óvalo.
+// `scale` agranda el dibujo para que cubra el óvalo (lo que sobra se recorta).
+// `square` estira el dibujo a lo alto para que recupere sus proporciones originales (sin dejar huecos entre líneas).
 function AsciiPortrait({
   art,
+  label,
   caption,
-  years,
-  plateClass,
+  detail,
+  scale = 1.2,
+  square = false,
+  textClass = "text-snow dark:text-mint",
   shadowClass,
-  textClass = "text-ink",
-  sizeClass = "max-w-[340px]",
 }) {
   const shown = useAsciiReveal(art);
-  const fontSize = useMemo(() => {
-    const cols = Math.max(...art.split("\n").map((line) => line.length));
-    return `${100 / (cols * 0.6)}cqw`;
-  }, [art]);
+  const { fontSize, stretch } = useMemo(() => {
+    const lines = art.split("\n");
+    const cols = Math.max(...lines.map((line) => line.length));
+    return {
+      fontSize: `${(scale * 100) / (cols * CELL_WIDTH)}cqw`,
+      stretch: square ? (cols * CELL_WIDTH) / lines.length : 1,
+    };
+  }, [art, scale, square]);
 
   return (
-    <figure className={`mx-auto w-full ${sizeClass}`}>
-      <div
-        role="img"
-        aria-label={`Retrato en ASCII de ${caption}`}
-        className={`border-2 border-ink p-2 ${plateClass} ${shadowClass}`}
-      >
-        <div className="overflow-hidden [container-type:inline-size]">
+    <figure className="mx-auto w-full">
+      <AsciiOval label={label} shadowClass={shadowClass}>
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <pre
             aria-hidden="true"
             className={`font-mono ${textClass}`}
-            style={{ fontSize, lineHeight: fontSize }}
+            style={{ fontSize, lineHeight: 1, transform: `scaleY(${stretch})` }}
           >
             {shown}
           </pre>
         </div>
-      </div>
-      <figcaption className="mt-6 flex items-baseline justify-between border-t-2 border-ink pt-2">
-        <span className="font-display text-xl font-extrabold uppercase">{caption}</span>
-        <span className="text-sm">{years}</span>
-      </figcaption>
+      </AsciiOval>
+      {caption && (
+        <figcaption className="mt-8 flex items-baseline justify-between border-t-2 border-ink pt-2">
+          <span className="font-display text-xl font-extrabold uppercase">{caption}</span>
+          <span className="text-sm">{detail}</span>
+        </figcaption>
+      )}
     </figure>
   );
 }

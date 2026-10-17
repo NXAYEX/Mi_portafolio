@@ -17,7 +17,7 @@ function ProjectNotFound() {
       <p className="mt-4 text-lg">El enlace puede estar mal escrito o el proyecto ya no existe.</p>
       <a
         href="/#proyectos"
-        className={`mt-8 inline-block bg-ink px-6 py-3 font-semibold text-paper hover:bg-mint hover:text-ink ${focusRing}`}
+        className={`mt-8 inline-block bg-ink px-6 py-3 font-semibold text-paper hover:bg-mint hover:text-night ${focusRing}`}
       >
         Volver a los proyectos
       </a>

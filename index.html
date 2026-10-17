@@ -8,6 +8,17 @@
       name="description"
       content="Portafolio de Nayely Pérez Berna, estudiante de Ingeniería Civil en Informática (USM) con foco en IA y ciencia de datos."
     />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Aplica el tema guardado (o el del sistema) antes de pintar, para evitar un destello blanco
+      try {
+        var saved = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved === "dark" || (!saved && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

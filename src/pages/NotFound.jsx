@@ -20,7 +20,7 @@ function NotFound() {
         </p>
         <a
           href="/"
-          className="bg-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-mint hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+          className="bg-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-mint hover:text-night focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
         >
           Volver al inicio
         </a>

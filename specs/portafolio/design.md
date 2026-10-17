@@ -2,7 +2,8 @@
 
 - Paleta: papel #F2F3EF, tinta #16161D, menta #B8E6CF, lavanda #CFC6F2, durazno #FFCDB8, línea #C9CBC4.
 - Fuentes: Big Shoulders Display (títulos) e Instrument Sans (cuerpo). El ASCII usa monoespaciada.
-- Elemento firma: retratos ASCII de Ada Lovelace y Alan Turing que se "enfocan" al cargar (`useAsciiReveal`). Es el único movimiento de la página y se desactiva con prefers-reduced-motion.
+- Elemento firma: el retrato ASCII de Nayely, que se "enfoca" al cargar (`useAsciiReveal`), junto a una dona ASCII giratoria. Ambos van en óvalos (`AsciiOval`). Todo movimiento se desactiva con prefers-reduced-motion. Los retratos de Ada Lovelace y Alan Turing quedan guardados en `asciiArt.js` y como comentario en `Hero.jsx`.
+- Modo oscuro: botón en la barra; la clase `dark` vive en `<html>` y se guarda en localStorage. En modo oscuro los óvalos desaparecen y los dibujos se funden con el fondo.
 - Alien: aparece solo en la ficha XAI (la "caja negra") y en la página 404.
 - Rutas: `/` (inicio con secciones) y `/proyectos/:slug` (fichas).
 

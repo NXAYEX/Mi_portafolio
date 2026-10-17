@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 @layer base {
+  /* Colores que cambian con el tema: papel = fondo, ink = texto y bordes, line = reglas finas */
+  :root {
+    --paper: 242 243 239;
+    --ink: 22 22 29;
+    --line: 201 203 196;
+    color-scheme: light;
+  }
+  .dark {
+    --paper: 20 20 27;
+    --ink: 242 243 239;
+    --line: 58 59 68;
+    color-scheme: dark;
+  }
   html {
     scroll-behavior: smooth;
   }

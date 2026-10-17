@@ -4,9 +4,8 @@ function Alien({ className = "" }) {
     <svg
       viewBox="0 0 140 190"
       aria-hidden="true"
-      className={className}
+      className={`stroke-ink ${className}`}
       fill="none"
-      stroke="#16161D"
       strokeWidth="4"
       strokeLinecap="round"
       strokeLinejoin="round"

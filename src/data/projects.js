@@ -54,11 +54,9 @@ export const projects = [
     image: null,
     imageAlt: "",
     motif: String.raw`
-  .-""""-.
- /  .--.  \
-|  ( () )  |
- \  '--'  /
-  '-.__.-'`.slice(1),
+   _.-  _,..,_.
+    _,-'/ o \ '.     
+     '-.\___/.-'  `.slice(1),
     problem:
       "Ayudar a personas ciegas en las compras del supermercado con una app parecida a un carrito de compras, adaptada para ellas.",
     contribution: [
@@ -92,11 +90,12 @@ export const projects = [
     image: null,
     imageAlt: "",
     motif: String.raw`
-   .-""""-.
-  / .-""-. \
- | (  []  ) |
-  \ '-..-' /
-   '-.__.-'`.slice(1),
+     |\_/|
+   =( u o )=
+    /\ w /\
+   | |\_/| |
+   \_>---<_/
+   (___|___)`.slice(1),
     problem:
       "Los modelos de deep learning clasifican enfermedades oculares con buena precisión, pero funcionan como una “caja negra”. En salud, quien los usa necesita saber en qué parte de la imagen se basó el modelo para decidir. De ahí nace la inteligencia artificial explicable.",
     contribution: [

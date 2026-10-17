@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import AsciiOval from "./AsciiOval";
 import { prefersReducedMotion } from "../lib/motion";
 
 const WIDTH = 40;
@@ -43,10 +44,10 @@ function renderDonut(A, B) {
   return rows.join("\n");
 }
 
-function AsciiDonut({ className = "" }) {
+function AsciiDonut() {
   const reduced = useMemo(() => prefersReducedMotion(), []);
   const [frame, setFrame] = useState(() => renderDonut(1, 0.6));
-  const fontSize = `${100 / (WIDTH * 0.6)}cqw`;
+  const fontSize = `${85 / (WIDTH * 0.6)}cqw`;
 
   useEffect(() => {
     if (reduced) return undefined;
@@ -68,11 +69,19 @@ function AsciiDonut({ className = "" }) {
   }, [reduced]);
 
   return (
-    <div aria-hidden="true" className={`overflow-hidden [container-type:inline-size] ${className}`}>
-      <pre className="font-mono text-ink" style={{ fontSize, lineHeight: fontSize }}>
+    <AsciiOval
+      label="Dona giratoria dibujada con caracteres"
+      aspectClass="aspect-square"
+      shadowClass="bg-mint"
+    >
+      <pre
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-mono text-snow dark:text-lavender"
+        style={{ fontSize, lineHeight: fontSize }}
+      >
         {frame}
       </pre>
-    </div>
+    </AsciiOval>
   );
 }
 

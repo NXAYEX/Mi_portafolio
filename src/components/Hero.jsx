@@ -2,31 +2,26 @@ import { Mail } from "lucide-react";
 import AsciiPortrait from "./AsciiPortrait";
 import AsciiDonut from "./AsciiDonut";
 import HeroFacts from "./HeroFacts";
-import * as ascii from "../data/asciiArt";
+import { nayelyArt } from "../data/asciiArt";
 import { profile } from "../data/profile";
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink";
 
-// Título tipo sello: contorno de tinta y sombra dura desplazada
+// Título tipo sello: contorno y sombra dura desplazada, del color del texto principal
 const stamp =
-  "block font-display font-black uppercase text-3xl md:text-4xl [-webkit-text-stroke:2px_#16161D] [text-shadow:4px_4px_0_#16161D,8px_8px_0_#16161D]";
-
-const plateShadow = "shadow-[8px_8px_0_#16161D]";
+  "block font-display font-black uppercase text-3xl md:text-4xl lg:text-3xl xl:text-4xl [-webkit-text-stroke:2px_rgb(var(--ink))] [text-shadow:4px_4px_0_rgb(var(--ink)),8px_8px_0_rgb(var(--ink))]";
 
 function Hero() {
-  // Si todavía no está guardado el ASCII propio en asciiArt.js, se muestra un aviso
-  const selfArt = ascii.nayelyArt;
-
   return (
     <section id="inicio" className="mx-auto max-w-[1280px] px-4 pb-12 pt-10 md:px-8 md:pt-16">
-      <h1 className="mb-12 text-center">
-        <span className={`${stamp} text-mint`}>{profile.firstLine}</span>
-        <span className={`${stamp} mt-4 text-lavender`}>{profile.secondLine}</span>
-      </h1>
-
-      <div className="grid gap-10 lg:grid-cols-[180px_1fr_340px] lg:items-center xl:grid-cols-[220px_1fr_420px]">
-        <div className="text-center lg:col-start-2 lg:row-start-1">
+      {/* Tres columnas con los costados iguales para que el título quede siempre centrado */}
+      <div className="grid gap-12 lg:grid-cols-[240px_1fr_240px] lg:items-center lg:gap-8 xl:grid-cols-[270px_1fr_270px]">
+        <div className="text-center lg:order-2">
+          <h1 className="mb-8">
+            <span className={`${stamp} text-mint`}>{profile.firstLine}</span>
+            <span className={`${stamp} mt-4 text-lavender`}>{profile.secondLine}</span>
+          </h1>
           <p className="mb-3 font-display text-lg font-extrabold uppercase tracking-wide">
             {profile.role}
           </p>
@@ -35,61 +30,62 @@ function Hero() {
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <a
               href="#proyectos"
-              className={`bg-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-mint hover:text-ink ${focusRing}`}
+              className={`bg-ink px-6 py-3 font-semibold text-paper transition-colors hover:bg-mint hover:text-night ${focusRing}`}
             >
               Ver proyectos
             </a>
             <a
               href={`mailto:${profile.email}`}
-              className={`inline-flex items-center justify-center gap-2 border-2 border-ink px-6 py-3 font-semibold transition-colors hover:bg-peach ${focusRing}`}
+              className={`inline-flex items-center justify-center gap-2 border-2 border-ink px-6 py-3 font-semibold transition-colors hover:bg-peach hover:text-night ${focusRing}`}
             >
               <Mail size={18} aria-hidden="true" />
               Escribirme un correo
             </a>
           </div>
-          <AsciiDonut className="mx-auto mt-10 w-full max-w-[420px]" />
         </div>
 
-        <div className="lg:col-start-3 lg:row-start-1">
-          {selfArt ? (
-            <AsciiPortrait
-              art={selfArt}
-              caption="Nayely"
-              years="USM · Informática"
-              plateClass="bg-ink"
-              textClass="text-paper"
-              shadowClass={`${plateShadow.replace("#16161D", "#CFC6F2")}`}
-              sizeClass="max-w-[420px]"
-            />
-          ) : (
-            <p className="border-2 border-dashed border-ink p-6 text-center text-sm">
-              Falta guardar tu retrato: pega el ASCII en <code>src/data/asciiArt.js</code> con el
-              nombre <code>nayelyArt</code>.
-            </p>
-          )}
+        {/* En celular tu retrato va antes que la dona; en pantalla ancha, la dona a la izquierda y tú a la derecha */}
+        <div className="mx-auto w-full max-w-[360px] lg:order-3 lg:max-w-none">
+          <AsciiPortrait
+            art={nayelyArt}
+            label="Retrato de Nayely dibujado con caracteres ASCII"
+            caption="Nayely"
+            detail="USM · Informática"
+            scale={1.25}
+            square
+            shadowClass="bg-lavender"
+          />
         </div>
 
-        <div className="mx-auto grid w-full max-w-[420px] grid-cols-2 gap-6 lg:col-start-1 lg:row-start-1 lg:max-w-none lg:grid-cols-1">
-          <AsciiPortrait
-            art={ascii.adaArt}
-            caption="Ada Lovelace"
-            years="1815–1852"
-            plateClass="bg-lavender"
-            shadowClass={plateShadow}
-          />
-          <AsciiPortrait
-            art={ascii.turingArt}
-            caption="Alan Turing"
-            years="1912–1954"
-            plateClass="bg-mint"
-            shadowClass={plateShadow}
-          />
+        <div className="mx-auto w-full max-w-[280px] lg:order-1 lg:max-w-none">
+          <AsciiDonut />
         </div>
       </div>
 
-      <div className="mt-14">
+      <div className="mt-16">
         <HeroFacts />
       </div>
+
+      {/*
+        Retratos de Ada Lovelace y Alan Turing (guardados por si quieres volver a usarlos).
+        Los dibujos siguen en src/data/asciiArt.js como adaArt y turingArt.
+        Para mostrarlos: importa { adaArt, turingArt } arriba y pon esto dentro de la grilla:
+
+        <AsciiPortrait
+          art={adaArt}
+          label="Retrato de Ada Lovelace dibujado con caracteres ASCII"
+          caption="Ada Lovelace"
+          detail="1815–1852"
+          shadowClass="bg-mint"
+        />
+        <AsciiPortrait
+          art={turingArt}
+          label="Retrato de Alan Turing dibujado con caracteres ASCII"
+          caption="Alan Turing"
+          detail="1912–1954"
+          shadowClass="bg-peach"
+        />
+      */}
     </section>
   );
 }

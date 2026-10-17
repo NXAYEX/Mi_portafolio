@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
+  darkMode: "class",
   theme: {
     // Escala tipográfica fija: 14, 16, 20, 28, 40, 64, 112
     fontSize: {
@@ -14,12 +15,16 @@ export default {
     },
     extend: {
       colors: {
-        paper: "#F2F3EF",
-        ink: "#16161D",
+        // Cambian con el modo claro/oscuro (variables en index.css)
+        paper: "rgb(var(--paper) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        // Fijos: pastel y texto que va sobre pastel
         mint: "#B8E6CF",
         lavender: "#CFC6F2",
         peach: "#FFCDB8",
-        line: "#C9CBC4",
+        night: "#16161D",
+        snow: "#F2F3EF",
       },
       fontFamily: {
         display: ['"Big Shoulders Display"', "sans-serif"],

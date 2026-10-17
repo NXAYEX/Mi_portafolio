@@ -23,7 +23,7 @@ function SkillsSection() {
             <p>{detail}</p>
             <Link
               to={`/proyectos/${projectSlug}`}
-              className="inline-flex items-center gap-1 font-semibold underline decoration-2 underline-offset-4 hover:bg-mint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+              className="inline-flex items-center gap-1 font-semibold underline decoration-2 underline-offset-4 hover:bg-mint hover:text-night focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
             >
               {projectName}
               <ArrowUpRight size={18} aria-hidden="true" />
@@ -50,7 +50,7 @@ function SkillsSection() {
             {strengths.map((strength, index) => (
               <li
                 key={strength}
-                className={`border-2 border-ink px-4 py-2 font-display text-xl font-extrabold uppercase ${chipColors[index % 3]}`}
+                className={`border-2 border-ink px-4 py-2 font-display text-xl font-extrabold uppercase ${chipColors[index % 3]} text-night`}
               >
                 {strength}
               </li>
