@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import Navbar from "../components/Navbar";
 import FichaSection from "../components/FichaSection";
+import Alien from "../components/Alien";
 import ProjectCover from "../components/ProjectCover";
 import { getProject, projects } from "../data/projects";
 
@@ -79,7 +80,10 @@ function ProjectPage() {
           <ProjectCover project={project} className="w-full" />
         </header>
 
-        <FichaSection label="Problema">
+        <FichaSection
+          label="Problema"
+          aside={project.slug === "xai-retina" ? <Alien className="w-28 shrink-0" /> : null}
+        >
           <p>{project.problem}</p>
         </FichaSection>
         <FichaSection label="Mi aporte">

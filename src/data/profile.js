@@ -12,6 +12,8 @@ export const profile = {
   github: "https://github.com/NXAYEX",
   // El CV público va en public/cv/CV-Nayely-Perez.pdf. Para actualizarlo, reemplaza ese archivo.
   cvUrl: "/cv/CV-Nayely-Perez.pdf",
+  // Cambia a true cuando hayas guardado el PDF (sin RUT, dirección, teléfono ni fecha de nacimiento).
+  cvAvailable: false,
 };
 
 export const navLinks = [

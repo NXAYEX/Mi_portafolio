@@ -2,7 +2,7 @@ import { Mail } from "lucide-react";
 import AsciiPortrait from "./AsciiPortrait";
 import AsciiDonut from "./AsciiDonut";
 import HeroFacts from "./HeroFacts";
-import { adaArt, turingArt } from "../data/asciiArt";
+import * as ascii from "../data/asciiArt";
 import { profile } from "../data/profile";
 
 const focusRing =
@@ -10,17 +10,23 @@ const focusRing =
 
 // Título tipo sello: contorno de tinta y sombra dura desplazada
 const stamp =
-  "block font-display font-black uppercase text-3xl md:text-4xl lg:text-3xl xl:text-4xl [-webkit-text-stroke:2px_#16161D] [text-shadow:4px_4px_0_#16161D,8px_8px_0_#16161D]";
+  "block font-display font-black uppercase text-3xl md:text-4xl [-webkit-text-stroke:2px_#16161D] [text-shadow:4px_4px_0_#16161D,8px_8px_0_#16161D]";
+
+const plateShadow = "shadow-[8px_8px_0_#16161D]";
 
 function Hero() {
+  // Si todavía no está guardado el ASCII propio en asciiArt.js, se muestra un aviso
+  const selfArt = ascii.nayelyArt;
+
   return (
     <section id="inicio" className="mx-auto max-w-[1280px] px-4 pb-12 pt-10 md:px-8 md:pt-16">
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[240px_1fr_240px] xl:grid-cols-[290px_1fr_290px] lg:items-center">
-        <div className="text-center sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1">
-          <h1 className="mb-8">
-            <span className={`${stamp} text-mint`}>{profile.firstLine}</span>
-            <span className={`${stamp} mt-4 text-lavender`}>{profile.secondLine}</span>
-          </h1>
+      <h1 className="mb-12 text-center">
+        <span className={`${stamp} text-mint`}>{profile.firstLine}</span>
+        <span className={`${stamp} mt-4 text-lavender`}>{profile.secondLine}</span>
+      </h1>
+
+      <div className="grid gap-10 lg:grid-cols-[180px_1fr_340px] lg:items-center xl:grid-cols-[220px_1fr_420px]">
+        <div className="text-center lg:col-start-2 lg:row-start-1">
           <p className="mb-3 font-display text-lg font-extrabold uppercase tracking-wide">
             {profile.role}
           </p>
@@ -41,25 +47,42 @@ function Hero() {
               Escribirme un correo
             </a>
           </div>
-          <AsciiDonut className="mx-auto mt-10 hidden w-full max-w-[260px] lg:block" />
+          <AsciiDonut className="mx-auto mt-10 w-full max-w-[420px]" />
         </div>
 
-        <div className="lg:col-start-1 lg:row-start-1">
+        <div className="lg:col-start-3 lg:row-start-1">
+          {selfArt ? (
+            <AsciiPortrait
+              art={selfArt}
+              caption="Nayely"
+              years="USM · Informática"
+              plateClass="bg-ink"
+              textClass="text-paper"
+              shadowClass={`${plateShadow.replace("#16161D", "#CFC6F2")}`}
+              sizeClass="max-w-[420px]"
+            />
+          ) : (
+            <p className="border-2 border-dashed border-ink p-6 text-center text-sm">
+              Falta guardar tu retrato: pega el ASCII en <code>src/data/asciiArt.js</code> con el
+              nombre <code>nayelyArt</code>.
+            </p>
+          )}
+        </div>
+
+        <div className="mx-auto grid w-full max-w-[420px] grid-cols-2 gap-6 lg:col-start-1 lg:row-start-1 lg:max-w-none lg:grid-cols-1">
           <AsciiPortrait
-            art={adaArt}
+            art={ascii.adaArt}
             caption="Ada Lovelace"
             years="1815–1852"
             plateClass="bg-lavender"
-            shadowClass="shadow-[8px_8px_0_#16161D]"
+            shadowClass={plateShadow}
           />
-        </div>
-        <div className="lg:col-start-3 lg:row-start-1">
           <AsciiPortrait
-            art={turingArt}
+            art={ascii.turingArt}
             caption="Alan Turing"
             years="1912–1954"
             plateClass="bg-mint"
-            shadowClass="shadow-[8px_8px_0_#16161D]"
+            shadowClass={plateShadow}
           />
         </div>
       </div>

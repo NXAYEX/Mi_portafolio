@@ -4,7 +4,15 @@ import { useAsciiReveal } from "../hooks/useAsciiReveal";
 // Retrato en ASCII sobre una lámina pastel con borde de tinta y sombra dura.
 // El tamaño de letra se calcula con el ancho de la lámina (cqw), así el dibujo
 // siempre ocupa todo el ancho sin importar el tamaño de pantalla.
-function AsciiPortrait({ art, caption, years, plateClass, shadowClass }) {
+function AsciiPortrait({
+  art,
+  caption,
+  years,
+  plateClass,
+  shadowClass,
+  textClass = "text-ink",
+  sizeClass = "max-w-[340px]",
+}) {
   const shown = useAsciiReveal(art);
   const fontSize = useMemo(() => {
     const cols = Math.max(...art.split("\n").map((line) => line.length));
@@ -12,7 +20,7 @@ function AsciiPortrait({ art, caption, years, plateClass, shadowClass }) {
   }, [art]);
 
   return (
-    <figure className="mx-auto w-full max-w-[340px]">
+    <figure className={`mx-auto w-full ${sizeClass}`}>
       <div
         role="img"
         aria-label={`Retrato en ASCII de ${caption}`}
@@ -21,7 +29,7 @@ function AsciiPortrait({ art, caption, years, plateClass, shadowClass }) {
         <div className="overflow-hidden [container-type:inline-size]">
           <pre
             aria-hidden="true"
-            className="font-mono text-ink"
+            className={`font-mono ${textClass}`}
             style={{ fontSize, lineHeight: fontSize }}
           >
             {shown}
